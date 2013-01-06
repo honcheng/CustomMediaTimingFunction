@@ -50,4 +50,5 @@ typedef enum : NSUInteger{
 
 @interface KKCustomMediaTimingFunction : CAMediaTimingFunction
 - (id)initWithEasingCurve:(NSUInteger)easingCurve;
++ (NSArray*)curveArrayForEasingCurve:(NSUInteger)easingCurve;
 @end

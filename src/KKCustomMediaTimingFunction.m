@@ -12,7 +12,20 @@
 
 - (id)initWithEasingCurve:(NSUInteger)easingCurve
 {
-	NSArray *curveArray = nil;
+	NSArray *curveArray = [KKCustomMediaTimingFunction curveArrayForEasingCurve:easingCurve];
+    self = [super initWithControlPoints:[curveArray[0] floatValue]
+                                       :[curveArray[1] floatValue]
+                                       :[curveArray[2] floatValue]
+                                       :[curveArray[3] floatValue]];
+    if(self){
+        
+    }
+    return self;
+}
+
++ (NSArray*)curveArrayForEasingCurve:(NSUInteger)easingCurve
+{
+    NSArray *curveArray = nil;
     switch (easingCurve) {
             
         case KKCMTFEasingCurveEaseInSine:
@@ -104,15 +117,7 @@
             curveArray = @[@0.00, @0.00, @1.00, @1.00]; break;
             break;
     }
-    self = [super initWithControlPoints:[curveArray[0] floatValue]
-                                       :[curveArray[1] floatValue]
-                                       :[curveArray[2] floatValue]
-                                       :[curveArray[3] floatValue]];
-    if(self){
-        
-    }
-    return self;
+    return curveArray;
 }
-
 
 @end
